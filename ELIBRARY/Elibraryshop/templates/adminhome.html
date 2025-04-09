@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #8B005D, #FF4E50);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+        }
+        .dashboard-container {
+            padding: 30px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 5px 15px rgba(255, 255, 255, 0.2);
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card i {
+            font-size: 50px;
+            color: #FFD700;
+        }
+        .logout-btn {
+            background-color: #FF4E50;
+            border-radius: 8px;
+            color: white;
+        }
+        .btn-primary {
+            background-color: #FFD700;
+            border: none;
+            color: #8B005D;
+            font-weight: bold;
+        }
+        .btn-primary:hover {
+            background-color: #FFA500;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid d-flex justify-content-between">
+            <span class="navbar-brand mb-0 h1">📚 Admin Dashboard</span>
+            <a href="/adminlogin/" class="btn logout-btn">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container dashboard-container">
+        
+        <h2 class="text-center mb-4">Welcome, Admin!</h2>
+        
+        
+        <div class="row g-4">
+            <div class="col-md-4 col-sm-6">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <i class="bi bi-book"></i>
+                        <h5 class="card-title mt-3">My Books</h5>
+                        <p class="card-text">View your saved books.</p>
+                        <a href="/book_list/" class="btn btn-primary">View Books</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <i class="bi bi-plus-square"></i>
+                        <h5 class="card-title mt-3">Add Books</h5>
+                        <p class="card-text">Add new books.</p>
+                        <a href="/add_book/" class="btn btn-primary">Add Books</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <i class="bi bi-journal"></i>
+                        <h5 class="card-title mt-3">Library</h5>
+                        <p class="card-text">Explore the library collection.</p>
+                        <a href="/book_list/" class="btn btn-primary">Browse Library</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <i class="bi bi-person-circle"></i>
+                        <h5 class="card-title mt-3">Users</h5>
+                        <p class="card-text">Manage user details.</p>
+                        <a href="/user_list/" class="btn btn-primary">View Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="card p-3">
+                    <div class="card-body">
+                        <i class="bi bi-gear"></i>
+                        <h5 class="card-title mt-3">Settings</h5>
+                        <p class="card-text">Customize your preferences.</p>
+                        <a href="/index/" class="btn btn-primary">Go to Settings</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

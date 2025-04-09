@@ -1,0 +1,100 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Books | Memorial</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #8e44ad, #c0392b);
+            color: white;
+            min-height: 100vh;
+        }
+        .search-container {
+            max-width: 600px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .search-container input {
+            border-radius: 25px;
+            padding: 12px;
+            width: 80%;
+        }
+        .search-container button {
+            border-radius: 50%;
+            padding: 10px;
+            background: white;
+            border: none;
+        }
+        .search-results {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            color: black;
+        }
+        .search-results h2 {
+            color: #8e44ad;
+        }
+        .list-group-item {
+            transition: 0.3s;
+        }
+        .list-group-item:hover {
+            background: #8e44ad;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'user_home' %}">Memorial</a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user_home' %}">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Bar -->
+    <div class="search-container">
+        <form method="GET" action="{% url 'search_books' %}" class="d-flex">
+            <input class="form-control me-2" type="search" name="q" placeholder="Search for books..." required>
+            <button type="submit">
+                <img src="{% static 'images/search_icon.png' %}" alt="Search" width="24px">
+            </button>
+        </form>
+    </div>
+
+    <!-- Search Results -->
+    <div class="container search-results">
+        <h2 class="text-center">Search Results for "{{ query }}"</h2>
+        {% if results %}
+            <div class="list-group">
+                {% for book in results %}
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <strong>{{ book.title }}</strong> by {{ book.author }}
+                    </a>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="text-muted text-center">No books found.</p>
+        {% endif %}
+        <div class="text-center mt-3">
+            <a href="{% url 'user_home' %}" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap Scripts -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

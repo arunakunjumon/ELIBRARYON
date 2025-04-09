@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Books | Memorial</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background: linear-gradient(to right, #8e44ad, #c0392b);
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            min-height: 100vh;
+        }
+
+        .container h1 {
+            color: #fff;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .card {
+            transition: 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            background: white;
+            color: black;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 12px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            object-fit: cover;
+            height: 260px;
+            width: 100%;
+        }
+
+        .card-body {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            color: #8e44ad;
+            font-size: 1.2rem;
+        }
+
+        .card-text {
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff5722, #d32f2f);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #d32f2f, #ff5722);
+        }
+
+        .text-center a {
+            display: inline-block;
+            margin: 20px 0;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .text-center a:hover {
+            color: #ffcc00;
+            text-decoration: underline;
+        }
+
+        .navbar {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'user_home' %}">Memorial</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user_home' %}">Home</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <h1 class="text-center">List of Books</h1>
+    <div class="text-center">
+        <a href="{% url 'add_book' %}" class="btn btn-warning">Add New Book</a>
+    </div>
+
+    <div class="container my-5">
+        <h1 class="mb-4">My Books</h1>
+        <div class="row">
+            {% for book in books %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    {% if book.image %}
+                        <img src="{{ book.image.url }}" class="card-img-top" alt="{{ book.title }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/250" class="card-img-top" alt="No Image Available">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ book.title }}</h5>
+                        <p class="card-text">Author: <strong>{{ book.author }}</strong></p>
+                        <p class="card-text">{{ book.description }}</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="{% url 'book_details' book.id %}" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
